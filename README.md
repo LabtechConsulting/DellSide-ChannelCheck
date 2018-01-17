@@ -22,3 +22,5 @@ Examples
     $Models | Get-DellSpeculationControlBIOSVersion 
 
 ![enter image description here](https://i.imgur.com/Qe3uKyk.png)
+
+To query a Windows machine for all speculation control settings run the [Speculation Control script](https://www.powershellgallery.com/packages/SpeculationControl).
