@@ -33,6 +33,8 @@ param (
     begin{
         # Get list of hardware
         try {
+            $url = 'http://www.dell.com/support/article/us/en/04/sln308587/microprocessor-side-channel-vulnerabilities-cve-2017-5715-cve-2017-5753-cve-2017-5754-impact-on-dell-products'
+
             $test = iwr $url -ErrorAction Stop
         } catch { 
             Write-Warning "There was an error accessing the Dell hardware list."
@@ -44,7 +46,7 @@ param (
             $Local = $true
             $Model = (Get-WmiObject Win32_Computersystem | Where {$_.manufacturer -like "*Dell*"}).model
             if (!$Model) {
-                Write-Warning "ERROR: Dell model not detected. You can specify a model with the -Model switch."
+                Write-Warning "Dell model not detected. You can specify a model with the -Model switch."
                 exit 1
             }
         }
@@ -57,7 +59,7 @@ param (
             $PlainText = $Contetnt.outerText
             $Split = ($PlainText -split '\n\s*\n\s*\n')
         } catch {
-            Write-Warning "ERROR: There was an issue parsing the web data."
+            Write-Warning "There was an issue parsing the web data."
         }
         # Check for match
         try {
@@ -79,7 +81,7 @@ param (
         
             Write-Output $Output
         } catch {
-            Write-Warning "ERROR: Unable to find model: $Model"
+            Write-Warning "Unable to find model: $Model"
         }
     }
     end {
