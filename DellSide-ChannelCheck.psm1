@@ -33,7 +33,7 @@ param (
     begin{
         # Get list of hardware
         try {
-            $url = 'http://www.dell.com/support/article/us/en/04/sln308587/microprocessor-side-channel-vulnerabilities-cve-2017-5715-cve-2017-5753-cve-2017-5754-impact-on-dell-products'
+            $url = 'http://www.dell.com/support/article/us/en/04/sln308587/microprocessor-side-channel-vulnerabilities-cve-2017-5715-cve-2017-5753-cve-2017-5754-impact-on-dell-products?lang=en'
             $test = iwr $url -ErrorAction Stop
         } catch { 
             Write-Warning "There was an error accessing the Dell hardware list."
@@ -56,7 +56,7 @@ param (
             $_Model = $_Model -replace ' Tower',''
             $_Model = $_Model -replace ' ','.*'
             $Contetnt = $test.ParsedHtml.getElementById('dvDynamicContent')
-            $PlainText = $Contetnt.outerText
+            $PlainText = $Contetnt.textContent
             $Split = ($PlainText -split '\n\s*\n\s*\n')
         } catch {
             Write-Warning "There was an issue parsing the web data."
