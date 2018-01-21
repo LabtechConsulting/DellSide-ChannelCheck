@@ -37,6 +37,7 @@ param (
             $test = iwr $url -ErrorAction Stop
         } catch { 
             Write-Warning "There was an error accessing the Dell hardware list."
+            Write-Output $Error[0]
         }
     }
     process {
