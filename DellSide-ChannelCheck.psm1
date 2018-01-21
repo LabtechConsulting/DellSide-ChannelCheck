@@ -34,7 +34,6 @@ param (
         # Get list of hardware
         try {
             $url = 'http://www.dell.com/support/article/us/en/04/sln308587/microprocessor-side-channel-vulnerabilities-cve-2017-5715-cve-2017-5753-cve-2017-5754-impact-on-dell-products'
-
             $test = iwr $url -ErrorAction Stop
         } catch { 
             Write-Warning "There was an error accessing the Dell hardware list."
